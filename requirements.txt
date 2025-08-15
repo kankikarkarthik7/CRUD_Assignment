@@ -1,0 +1,8 @@
+django
+pillow
+whitenoise
+gunicorn
+django-heroku
+psycopg2-binary
+django-cors-headers
+django-environ
