@@ -1,36 +1,137 @@
-<!DOCTYPE html>
+ <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Responsive Navbar</title>
+
+  <!-- Font Awesome -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+
+  <style>
+    body {
+      margin: 0;
+      font-family: Arial, sans-serif;
+    }
+
+    /* Navbar */
+    #navbar {
+      background-color: #333;
+      color: white;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 10px 20px;
+    }
+
+    /* Hamburger button */
+    .fa-bars {
+      font-size: 24px;
+      color: white;
+      cursor: pointer;
+      display: none;
+    
+    }
+
+     
+    #mobileMenu {
+      background-color: #444;
+      width: 40%;
+      display: none;
+      flex-direction: column;
+      padding: 10px 0;
+      border-radius: 2vw;
+      position: absolute;
+      top: 50px; /* just below navbar */
+      right: 55vw;
+      z-index: 999;
+    }
+
+    #mobileMenu a {
+      color: white;
+      text-decoration: none;
+      /* padding: 10px 15px; */
+      display: block;
+      border-radius: 2vw;
+      text-align: center;
+      cursor: pointer;
+    }
+
+    #mobileMenu:hover {
+      background-color: #333;
+      color: white;
+    }
+
+    #desktopMenu {
+      list-style: none;
+      display: flex;
+      margin: auto;
+      padding: 0;
+    }
+    #desktopMenu li {
+      margin: 0 15px;
+    }
+
+    #desktopMenu a {
+      text-decoration: none;
+      color: white;
+    }
+
+    #hamburger {
+      display: none;
+    }
+    @media (max-width: 768px) {
+
+      #desktopMenu {
+        display: none;
+      }
+      #hamburger {
+      display: block;
+    
+    }
+    #mobileMenu:hover {
+      background-color: black;
+      color: white;
+    }
+  }
+  </style>
 </head>
-<style>
-        #navbar {
-        font-family: Arial, sans-serif;
-        background-color: #333;
-        color: white;
-        display: flex;
-        justify-content: center;
-        cursor: pointer;
-        
-    }
-      #details{
-        text-decoration: none;
-        color: white
-    }
-      #home,#contactus{
-        text-decoration: none;
-        color: white
-    }
-</style>
 <body>
-        <nav id="navbar">
-        <ul><a href="{% url 'home' %}" id="home">Home</a></ul>
-        <ul><a href="{% url 'contactus' %}" id="contactus">Contact Us</a></ul>
-        <ul>About Us</ul>
-        <ul>Services</ul>
-        <ul ><a href="{% url 'details' %}" id="details" >Details</a></ul>
-    </nav>
+
+ 
+  <nav id="navbar">
+    <i class="fa-solid fa-bars" id="hamburger"></i>
+    <ul id="desktopMenu">
+      <li><a href="{% url 'home' %}">Home</a></li>
+      <li><a href="{% url 'contactus' %}">Contact Us</a></li>
+      <li>About Us</li>
+      <li>Services</li>
+      <li><a href="{% url 'details' %}">Details</a></li>
+    </ul>
+  </nav>
+ 
+  <div id="mobileMenu">
+    <a href="{% url 'home' %}">Home</a>
+    <a href="{% url 'contactus' %}">Contact Us</a>
+    <a href="#">About Us</a>
+    <a href="#">Services</a>
+    <a href="{% url 'details' %}">Details</a>
+  </div>
+
+  <script>
+    const hamburger = document.getElementById('hamburger');
+    const mobileMenu = document.getElementById('mobileMenu');
+
+    hamburger.addEventListener('click', () => {
+      mobileMenu.style.display = mobileMenu.style.display === 'flex' ? 'none' : 'flex';
+    });
+
+    window.addEventListener('resize', () => {
+      if (window.innerWidth > 768) {
+        mobileMenu.style.display = 'none';
+      }
+    });
+  </script>
+
 </body>
 </html>
