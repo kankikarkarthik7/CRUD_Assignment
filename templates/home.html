@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CRUD_Assignment</title>
+</head>
+<style>
+    body {
+        background-color: #f4f4f4;
+        text-align: center;
+    }
+
+</style>
+<body>
+    {% include 'nav.html' %}
+    <h1>Hello Welcome to this page</h1>
+    You are at the home page of our website.
+
+    <form method="post" enctype="multipart/form-data">
+        <p>Fill out the form below:</p>
+        {% csrf_token %}
+        {{form.as_p}}
+        <button type="submit">Submit</button>
+    </form>
+    {% if messages %}
+    {% for message in messages %}
+        <p style="color: green;">{{ message }}</p>
+    {% endfor %}
+    {% endif %}
+<br><br><br><br>
+    <h3>after submitted Go To Details</h3>
+
+    {% include 'footer.html' %}
+</body>
+</html>

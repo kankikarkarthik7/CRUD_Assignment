@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<style>
+        #navbar {
+        font-family: Arial, sans-serif;
+        background-color: #333;
+        color: white;
+        display: flex;
+        justify-content: center;
+        cursor: pointer;
+        
+    }
+      #details{
+        text-decoration: none;
+        color: white
+    }
+      #home,#contactus{
+        text-decoration: none;
+        color: white
+    }
+</style>
+<body>
+        <nav id="navbar">
+        <ul><a href="{% url 'home' %}" id="home">Home</a></ul>
+        <ul><a href="{% url 'contactus' %}" id="contactus">Contact Us</a></ul>
+        <ul>About Us</ul>
+        <ul>Services</ul>
+        <ul ><a href="{% url 'details' %}" id="details" >Details</a></ul>
+    </nav>
+</body>
+</html>

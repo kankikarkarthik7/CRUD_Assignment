@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Update Record</title>
+</head>
+<style>
+    form,h2{
+        text-align: center;
+    }
+</style>
+<body>
+    {% include 'nav.html' %}
+    <h2>Update Record: {{ obj }}</h2>
+
+    <form method="post">
+        {% csrf_token %}
+        {{ form.as_p }}
+        <button type="submit">Update</button>
+    </form>
+</body>
+</html>

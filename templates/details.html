@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Details</title>
+</head>
+<style>
+    #tableform,h2{
+        text-align: center;
+        display: flex;
+        justify-content: center;
+        font-size: 2vw;
+    }
+
+</style>
+<body>
+        
+{% include 'nav.html' %}
+<h2>All Submissions</h2>
+
+<table id="tableform">
+    <tr>
+        <th>Name</th>
+        <th>Email</th>
+        <th>Message</th>
+        <th>Update</th>
+        <th>Delete</th>
+    </tr>
+
+    {% for item in data %}
+    <tr>
+        <td>{{ item.name }}</td>
+        <td>{{ item.email }}</td>
+        <td>{{ item.message }}</td>
+        <td>
+        <a href="{% url 'update_data' item.id %}">Update</a> |
+        </td>
+        <td>
+        <a href="{% url 'delete_data' item.id %}">Delete</a>
+        </td>
+    </tr>
+    {% empty %}
+    <tr>
+        <td colspan="4">No data available.</td>
+    </tr>
+    {% endfor %}
+</table>
+</body>
+</html>
